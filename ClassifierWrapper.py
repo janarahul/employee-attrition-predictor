@@ -7,7 +7,7 @@ from sklearn.metrics import *
 class ClassifierWrapper:
     def __init__(self, classifier, x_train, x_test, y_train, y_test):
         """
-        Initializes the RandomForestClassifier
+        Initializes the Classifier and trains it
         :param classifier: A classifier object from the sklearn library
         :param x_train: Training data for the X input feature vector
         :param x_test:  The input feature vector to test classifier on
