@@ -11,3 +11,6 @@ A wrapper for scikit-learn classifiers. The class takes a classifier instance, t
 
 ## setup.py
 This is code to freeze the Python programs to executables.
+
+## ConversionAndSplitting.py
+This file takes the data from the UI generated files, formats them appropriately and passes them to a K-Nearest Neighbors classifier through the ClassifierWrapper. After training the model, it predicts the output of the query, taken from the CSV chosen by the user.

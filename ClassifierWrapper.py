@@ -2,12 +2,13 @@
 A wrapper class for a Classifier.
 """
 from sklearn.metrics import *
+import math
 
 
 class ClassifierWrapper:
     def __init__(self, classifier, x_train, x_test, y_train, y_test):
         """
-        Initializes the Classifier and trains it
+        Initializes the RandomForestClassifier
         :param classifier: A classifier object from the sklearn library
         :param x_train: Training data for the X input feature vector
         :param x_test:  The input feature vector to test classifier on
@@ -50,4 +51,29 @@ class ClassifierWrapper:
         recall = recall_score(self.py, self.predictions)
         report = classification_report(self.py, self.predictions)
 
+        print('Success: ' + str(success))
+        print('Fail: ' + str(fail))
+        print('Precision: ', math.trunc(precision * 100000) / 100000)
+        print('Recall: ', math.trunc(recall * 100000) / 100000)
+        print('Accuracy: ', math.trunc(accuracy * 100000) / 100000)
+        print('F1 Score: ', math.trunc(f1 * 100000) / 100000)
+        print('False Positives: ', fp)
+        print('False Negatives: ', fn)
+        print('Report:\n')
+        print(report)
         return success, fail, precision, recall, accuracy, f1, fp, fn, report
+
+    def predict(self, x):
+        """
+        Predicts the output vector y from a given input matrix x.
+
+        :param x: The query data for the X matrix
+        :return: y, a vector with predicted outputs
+        """
+        # First also train from the 30% training data
+        merged_x = self.tx + self.px
+        merged_y = self.ty + self.ty
+        self.classifier.fit(merged_x, merged_y)
+
+        # Predict and return values
+        return self.classifier.predict(x)

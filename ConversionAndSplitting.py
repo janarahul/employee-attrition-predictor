@@ -1,39 +1,47 @@
-
-
-import numpy as np
 import pandas as pd
-import seaborn as sns
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.cross_validation import train_test_split
-from sklearn import metrics
+from sklearn.model_selection import train_test_split
 from ClassifierWrapper import ClassifierWrapper
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.cross_validation import train_test_split
-from sklearn.metrics import confusion_matrix
+import tempfile
 
-# Below the Data Set is being read (Replace the Path with the your path)
-Data = pd.read_csv('PATH OF YOUR CSV')
+# Get data fetched from UI
+formatData = tempfile.gettempdir() + "\\ba_data.txt"
+with open(formatData) as f:
+    content = f.readlines()
 
-olist = list(Data.select_dtypes(['object']))
+# Below the Data Set is being read
+# Alternatively, use content[0]
+trainFileName = tempfile.gettempdir() + "\\ba_query.csv"
+Data = pd.read_csv(trainFileName)
+
 # Selecting the Columns of OBJECT type
-
+olist = list(Data.select_dtypes(['object']))
 
 # Converting the OBJECT type to INTEGER type
 for col in olist:
     Data[col] = Data[col].astype('category').cat.codes
 
-X = Data.drop("left", axis=1)
 # Loading the ATTRIBUTE columns
+X = Data.drop(content[1], axis=1)
 
-Y = Data["left"].astype('category')
 # Loading the TARGET column
+Y = Data[content[1]].astype('category')
 
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=3)
 # Splitting the DATA
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=3)
 
+# Instantiating KN NEIGHBOURS Class
 kn = KNeighborsClassifier(n_neighbors=1)
-# Instanciating KNNEIGHBOURS Class
 
+# Calling the Wrapper Class
 cw = ClassifierWrapper(kn, X_train, X_test, Y_train, Y_test)
-#
-Calling the Wrapper Class
+
+# Print all values from the KNN classifier
+# Printed values will be used by the UI to display to user
+print(cw.values())
+
+# Now predict
+# Alternatively, use content[2]
+queryFileName = tempfile.gettempdir() + "\\ba_query.csv"
+
+# TODO: Now do the same thing for the query file, and call cw.predict
