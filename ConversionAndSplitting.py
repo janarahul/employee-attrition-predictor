@@ -60,3 +60,6 @@ X1 = Data.drop(content[1], axis=1)
 
 # Calling the PREDICT Function
 cw.predict(X1)
+
+#Closing the file
+f.close()
