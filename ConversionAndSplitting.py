@@ -11,7 +11,7 @@ with open(formatData) as f:
 
 # Remove trailing newline characters
 for i in range(0, len(content)):
-	content[i] = content[i][:-1]
+    content[i] = content[i][:-1]
 
 # Below the Data Set is being read
 # Alternatively, use content[0]
@@ -58,12 +58,12 @@ olist1 = list(Data1.select_dtypes(['object']))
 # Converting the OBJECT type to INTEGER type
 for col in olist1:
     Data1[col] = Data1[col].astype('category').cat.codes
-    
+
 # Loading the ATTRIBUTE columns
 X1 = Data.drop(content[1], axis=1)
 
 # Calling the PREDICT Function
 print(cw.predict(X1))
 
-#Closing the file
+# Closing the file
 f.close()
