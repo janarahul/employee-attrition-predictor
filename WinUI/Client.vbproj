@@ -48,19 +48,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Animator">
-      <HintPath>..\..\..\..\..\Desktop\XC 30\XC\XC 19 src\XC 17.1 Source\Calc\bin\Debug\Animator.dll</HintPath>
+      <HintPath>Animator.dll</HintPath>
     </Reference>
     <Reference Include="ConsoleControl">
-      <HintPath>..\..\..\..\..\Desktop\XC 30\XC\XC 19 src\XC 17.1 Source\Calc\bin\Debug\ConsoleControl.dll</HintPath>
+      <HintPath>ConsoleControl.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework">
-      <HintPath>..\..\..\..\..\Desktop\XC 30\XC\XC 19 src\winforms-modernui-master\MetroFramework\bin\Debug\MetroFramework.dll</HintPath>
+      <HintPath>MetroFramework.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework.Design">
-      <HintPath>..\..\..\..\..\Desktop\XC 30\XC\XC 19 src\winforms-modernui-master\MetroFramework.Design\bin\Debug\MetroFramework.Design.dll</HintPath>
+      <HintPath>MetroFramework.Design.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework.Fonts">
-      <HintPath>..\..\..\..\..\Desktop\XC 30\XC\XC 19 src\winforms-modernui-master\MetroFramework.Fonts\bin\Debug\MetroFramework.Fonts.dll</HintPath>
+      <HintPath>MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
