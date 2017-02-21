@@ -122,9 +122,12 @@ Public Class Form1
                 ' Write the data to the file
                 File.WriteAllText(tempPath + "ba_data.txt", sb.ToString())
 
-                ' First run the Python freezed program
-
                 ' Load next screen
+                Animator2.Hide(Panel1)
+                Animator2.Show(Panel3)
+
+                ' First run the Python freezed program
+                ConsoleControl1.StartProcess("ConversionAndSplitting.exe", "")
             End If
         End If
     End Sub

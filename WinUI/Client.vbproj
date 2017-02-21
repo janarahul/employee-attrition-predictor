@@ -50,6 +50,9 @@
     <Reference Include="Animator">
       <HintPath>..\..\..\..\..\Desktop\XC 30\XC\XC 19 src\XC 17.1 Source\Calc\bin\Debug\Animator.dll</HintPath>
     </Reference>
+    <Reference Include="ConsoleControl">
+      <HintPath>..\..\..\..\..\Desktop\XC 30\XC\XC 19 src\XC 17.1 Source\Calc\bin\Debug\ConsoleControl.dll</HintPath>
+    </Reference>
     <Reference Include="MetroFramework">
       <HintPath>..\..\..\..\..\Desktop\XC 30\XC\XC 19 src\winforms-modernui-master\MetroFramework\bin\Debug\MetroFramework.dll</HintPath>
     </Reference>

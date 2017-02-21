@@ -70,10 +70,5 @@ class ClassifierWrapper:
         :param x: The query data for the X matrix
         :return: y, a vector with predicted outputs
         """
-        # First also train from the 30% training data
-        merged_x = self.tx + self.px
-        merged_y = self.ty + self.ty
-        self.classifier.fit(merged_x, merged_y)
-
         # Predict and return values
         return self.classifier.predict(x)

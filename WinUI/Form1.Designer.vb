@@ -24,8 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim Animation11 As AnimatorNS.Animation = New AnimatorNS.Animation()
-        Dim Animation12 As AnimatorNS.Animation = New AnimatorNS.Animation()
+        Dim Animation3 As AnimatorNS.Animation = New AnimatorNS.Animation()
+        Dim Animation4 As AnimatorNS.Animation = New AnimatorNS.Animation()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MetroTile1 = New MetroFramework.Controls.MetroTile()
@@ -34,6 +34,7 @@ Partial Class Form1
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Animator1 = New AnimatorNS.Animator(Me.components)
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.cmbOutputVector = New MetroFramework.Controls.MetroComboBox()
         Me.MetroTile2 = New MetroFramework.Controls.MetroTile()
         Me.MetroLabel4 = New MetroFramework.Controls.MetroLabel()
         Me.txtExclude = New System.Windows.Forms.TextBox()
@@ -41,11 +42,13 @@ Partial Class Form1
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.MetroLabel2 = New MetroFramework.Controls.MetroLabel()
         Me.Animator2 = New AnimatorNS.Animator(Me.components)
-        Me.cmbOutputVector = New MetroFramework.Controls.MetroComboBox()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.ConsoleControl1 = New ConsoleControl.ConsoleControl()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -115,19 +118,19 @@ Partial Class Form1
         '
         Me.Animator1.AnimationType = AnimatorNS.AnimationType.Mosaic
         Me.Animator1.Cursor = Nothing
-        Animation11.BlindCoeff = CType(resources.GetObject("Animation11.BlindCoeff"), System.Drawing.PointF)
-        Animation11.LeafCoeff = 0!
-        Animation11.MosaicCoeff = CType(resources.GetObject("Animation11.MosaicCoeff"), System.Drawing.PointF)
-        Animation11.MosaicShift = CType(resources.GetObject("Animation11.MosaicShift"), System.Drawing.PointF)
-        Animation11.MosaicSize = 20
-        Animation11.Padding = New System.Windows.Forms.Padding(30)
-        Animation11.RotateCoeff = 0!
-        Animation11.RotateLimit = 0!
-        Animation11.ScaleCoeff = CType(resources.GetObject("Animation11.ScaleCoeff"), System.Drawing.PointF)
-        Animation11.SlideCoeff = CType(resources.GetObject("Animation11.SlideCoeff"), System.Drawing.PointF)
-        Animation11.TimeCoeff = 0!
-        Animation11.TransparencyCoeff = 0!
-        Me.Animator1.DefaultAnimation = Animation11
+        Animation3.BlindCoeff = CType(resources.GetObject("Animation3.BlindCoeff"), System.Drawing.PointF)
+        Animation3.LeafCoeff = 0!
+        Animation3.MosaicCoeff = CType(resources.GetObject("Animation3.MosaicCoeff"), System.Drawing.PointF)
+        Animation3.MosaicShift = CType(resources.GetObject("Animation3.MosaicShift"), System.Drawing.PointF)
+        Animation3.MosaicSize = 20
+        Animation3.Padding = New System.Windows.Forms.Padding(30)
+        Animation3.RotateCoeff = 0!
+        Animation3.RotateLimit = 0!
+        Animation3.ScaleCoeff = CType(resources.GetObject("Animation3.ScaleCoeff"), System.Drawing.PointF)
+        Animation3.SlideCoeff = CType(resources.GetObject("Animation3.SlideCoeff"), System.Drawing.PointF)
+        Animation3.TimeCoeff = 0!
+        Animation3.TransparencyCoeff = 0!
+        Me.Animator1.DefaultAnimation = Animation3
         '
         'Panel2
         '
@@ -143,6 +146,16 @@ Partial Class Form1
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(764, 395)
         Me.Panel2.TabIndex = 1
+        '
+        'cmbOutputVector
+        '
+        Me.cmbOutputVector.FormattingEnabled = True
+        Me.cmbOutputVector.ItemHeight = 23
+        Me.cmbOutputVector.Location = New System.Drawing.Point(442, 67)
+        Me.cmbOutputVector.Name = "cmbOutputVector"
+        Me.cmbOutputVector.Size = New System.Drawing.Size(145, 29)
+        Me.cmbOutputVector.TabIndex = 0
+        Me.cmbOutputVector.UseSelectable = True
         '
         'MetroTile2
         '
@@ -210,35 +223,46 @@ Partial Class Form1
         '
         Me.Animator2.AnimationType = AnimatorNS.AnimationType.HorizSlide
         Me.Animator2.Cursor = Nothing
-        Animation12.BlindCoeff = CType(resources.GetObject("Animation12.BlindCoeff"), System.Drawing.PointF)
-        Animation12.LeafCoeff = 0!
-        Animation12.MosaicCoeff = CType(resources.GetObject("Animation12.MosaicCoeff"), System.Drawing.PointF)
-        Animation12.MosaicShift = CType(resources.GetObject("Animation12.MosaicShift"), System.Drawing.PointF)
-        Animation12.MosaicSize = 0
-        Animation12.Padding = New System.Windows.Forms.Padding(0)
-        Animation12.RotateCoeff = 0!
-        Animation12.RotateLimit = 0!
-        Animation12.ScaleCoeff = CType(resources.GetObject("Animation12.ScaleCoeff"), System.Drawing.PointF)
-        Animation12.SlideCoeff = CType(resources.GetObject("Animation12.SlideCoeff"), System.Drawing.PointF)
-        Animation12.TimeCoeff = 0!
-        Animation12.TransparencyCoeff = 0!
-        Me.Animator2.DefaultAnimation = Animation12
+        Animation4.BlindCoeff = CType(resources.GetObject("Animation4.BlindCoeff"), System.Drawing.PointF)
+        Animation4.LeafCoeff = 0!
+        Animation4.MosaicCoeff = CType(resources.GetObject("Animation4.MosaicCoeff"), System.Drawing.PointF)
+        Animation4.MosaicShift = CType(resources.GetObject("Animation4.MosaicShift"), System.Drawing.PointF)
+        Animation4.MosaicSize = 0
+        Animation4.Padding = New System.Windows.Forms.Padding(0)
+        Animation4.RotateCoeff = 0!
+        Animation4.RotateLimit = 0!
+        Animation4.ScaleCoeff = CType(resources.GetObject("Animation4.ScaleCoeff"), System.Drawing.PointF)
+        Animation4.SlideCoeff = CType(resources.GetObject("Animation4.SlideCoeff"), System.Drawing.PointF)
+        Animation4.TimeCoeff = 0!
+        Animation4.TransparencyCoeff = 0!
+        Me.Animator2.DefaultAnimation = Animation4
         '
-        'cmbOutputVector
+        'Panel3
         '
-        Me.cmbOutputVector.FormattingEnabled = True
-        Me.cmbOutputVector.ItemHeight = 23
-        Me.cmbOutputVector.Location = New System.Drawing.Point(442, 67)
-        Me.cmbOutputVector.Name = "cmbOutputVector"
-        Me.cmbOutputVector.Size = New System.Drawing.Size(145, 29)
-        Me.cmbOutputVector.TabIndex = 0
-        Me.cmbOutputVector.UseSelectable = True
+        Me.Panel3.Controls.Add(Me.ConsoleControl1)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(20, 60)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(764, 395)
+        Me.Panel3.TabIndex = 9
+        '
+        'ConsoleControl1
+        '
+        Me.ConsoleControl1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ConsoleControl1.IsInputEnabled = True
+        Me.ConsoleControl1.Location = New System.Drawing.Point(0, 224)
+        Me.ConsoleControl1.Name = "ConsoleControl1"
+        Me.ConsoleControl1.SendKeyboardCommandsToProcess = False
+        Me.ConsoleControl1.ShowDiagnostics = False
+        Me.ConsoleControl1.Size = New System.Drawing.Size(764, 171)
+        Me.ConsoleControl1.TabIndex = 0
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(804, 475)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Form1"
@@ -249,6 +273,7 @@ Partial Class Form1
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -269,4 +294,6 @@ Partial Class Form1
     Friend WithEvents MetroLabel3 As MetroFramework.Controls.MetroLabel
     Friend WithEvents MetroTile2 As MetroFramework.Controls.MetroTile
     Friend WithEvents cmbOutputVector As MetroFramework.Controls.MetroComboBox
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents ConsoleControl1 As ConsoleControl.ConsoleControl
 End Class

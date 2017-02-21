@@ -9,6 +9,10 @@ formatData = tempfile.gettempdir() + "\\ba_data.txt"
 with open(formatData) as f:
     content = f.readlines()
 
+# Remove trailing newline characters
+for i in range(0, len(content)):
+	content[i] = content[i][:-1]
+
 # Below the Data Set is being read
 # Alternatively, use content[0]
 trainFileName = tempfile.gettempdir() + "\\ba_train.csv"
@@ -59,7 +63,7 @@ for col in olist1:
 X1 = Data.drop(content[1], axis=1)
 
 # Calling the PREDICT Function
-cw.predict(X1)
+print(cw.predict(X1))
 
 #Closing the file
 f.close()
