@@ -18,6 +18,10 @@ Public Class Form1
         Next
         Panel1.Show()
         screen = 1
+
+        lblResult.Hide()
+        Label2.Hide()
+        txtResult.Hide()
     End Sub
 
     Private Sub SaveToCSV(d As DataTable, fileName As String)
@@ -83,6 +87,78 @@ Public Class Form1
         End If
     End Sub
 
+    Private Async Sub ComputeAsync()
+        ' Save all the data for the Python code
+        Dim tempPath = Path.GetTempPath() + "\"
+
+        Dim trainFileName As String = tempPath + "ba_train.csv"
+        Dim queryFileName As String = tempPath + "ba_query.csv"
+
+        SaveToCSV(dt, trainFileName)
+        Dim sb As New StringBuilder
+        sb.AppendLine(trainFileName)
+        sb.AppendLine(outputColumn)
+        sb.AppendLine(queryFileName)
+
+        ' Load and format the query data
+        queryData = CsvImport.NewDataTable(fileName, ",")
+        ModifyDT(queryData)
+        SaveToCSV(queryData, queryFileName)
+
+        ' Write the data to the file
+        File.WriteAllText(tempPath + "ba_data.txt", sb.ToString())
+
+        ' Load next screen
+        Animator2.AnimationType = AnimatorNS.AnimationType.Transparent
+        Animator2.Hide(Panel1)
+        Animator2.Show(Panel3)
+        ConsoleControl1.Hide()
+        ' Show loading
+        ProgressBar1.Show()
+
+        ' First run the Python freezed program
+        ConsoleControl1.StartProcess("ConversionAndSplitting.exe", "")
+        Await Task.Run(Sub()
+                           While ConsoleControl1.IsProcessRunning
+                               ' Wait for the process to finish
+                               Threading.Thread.Sleep(500)
+                           End While
+                       End Sub)
+
+        ' Process finished, read output
+        Dim startIndex = 0 ' The index to start showing the output values
+        Dim ctl = ConsoleControl1.InternalRichTextBox
+        If Not ctl.Lines(0).StartsWith("Success") Then
+            ' Remove the Qt warning message
+            startIndex = 1
+        End If
+
+        Label1.Hide()
+        ProgressBar1.Hide()
+
+        ' Now process the string
+        ' The format is like this (including Qt warning message):
+        ' Line 2: Successes
+        ' 3: Fail
+        ' 4: Precision
+        ' 5: Recall
+        ' 6: Accuracy
+        ' 7: F1 Score
+        ' 8: FP
+        ' 9: FN
+        ' Last line: Predictions
+        sb = New StringBuilder
+        For i = startIndex To startIndex + 7
+            sb.AppendLine(ctl.Lines(i))
+        Next
+        Label2.Show()
+        lblResult.Text = sb.ToString()
+        lblResult.Show()
+
+        txtResult.Text = ctl.Lines(ctl.Lines.Count - 2)
+        txtResult.Show()
+    End Sub
+
     Private Sub MetroTile1_Click(sender As Object, e As EventArgs) Handles MetroTile1.Click
         If Not PictureBox1.Visible Then
             MetroFramework.MetroMessageBox.Show(Me, "You must choose a valid CSV file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -101,33 +177,7 @@ Public Class Form1
                 Animator2.Hide(Panel1, True)
                 Animator2.Show(Panel2, True)
             Else
-                ' Save all the data for the Python code
-
-                Dim tempPath = Path.GetTempPath() + "\"
-
-                Dim trainFileName As String = tempPath + "ba_train.csv"
-                Dim queryFileName As String = tempPath + "ba_query.csv"
-
-                SaveToCSV(dt, trainFileName)
-                Dim sb As New StringBuilder
-                sb.AppendLine(trainFileName)
-                sb.AppendLine(outputColumn)
-                sb.AppendLine(queryFileName)
-
-                ' Load and format the query data
-                queryData = CsvImport.NewDataTable(fileName, ",")
-                ModifyDT(queryData)
-                SaveToCSV(queryData, queryFileName)
-
-                ' Write the data to the file
-                File.WriteAllText(tempPath + "ba_data.txt", sb.ToString())
-
-                ' Load next screen
-                Animator2.Hide(Panel1)
-                Animator2.Show(Panel3)
-
-                ' First run the Python freezed program
-                ConsoleControl1.StartProcess("ConversionAndSplitting.exe", "")
+                ComputeAsync()
             End If
         End If
     End Sub

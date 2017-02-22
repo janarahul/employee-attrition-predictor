@@ -24,8 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim Animation3 As AnimatorNS.Animation = New AnimatorNS.Animation()
-        Dim Animation4 As AnimatorNS.Animation = New AnimatorNS.Animation()
+        Dim Animation1 As AnimatorNS.Animation = New AnimatorNS.Animation()
+        Dim Animation2 As AnimatorNS.Animation = New AnimatorNS.Animation()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MetroTile1 = New MetroFramework.Controls.MetroTile()
@@ -44,6 +44,11 @@ Partial Class Form1
         Me.Animator2 = New AnimatorNS.Animator(Me.components)
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ConsoleControl1 = New ConsoleControl.ConsoleControl()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblResult = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtResult = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -118,19 +123,19 @@ Partial Class Form1
         '
         Me.Animator1.AnimationType = AnimatorNS.AnimationType.Mosaic
         Me.Animator1.Cursor = Nothing
-        Animation3.BlindCoeff = CType(resources.GetObject("Animation3.BlindCoeff"), System.Drawing.PointF)
-        Animation3.LeafCoeff = 0!
-        Animation3.MosaicCoeff = CType(resources.GetObject("Animation3.MosaicCoeff"), System.Drawing.PointF)
-        Animation3.MosaicShift = CType(resources.GetObject("Animation3.MosaicShift"), System.Drawing.PointF)
-        Animation3.MosaicSize = 20
-        Animation3.Padding = New System.Windows.Forms.Padding(30)
-        Animation3.RotateCoeff = 0!
-        Animation3.RotateLimit = 0!
-        Animation3.ScaleCoeff = CType(resources.GetObject("Animation3.ScaleCoeff"), System.Drawing.PointF)
-        Animation3.SlideCoeff = CType(resources.GetObject("Animation3.SlideCoeff"), System.Drawing.PointF)
-        Animation3.TimeCoeff = 0!
-        Animation3.TransparencyCoeff = 0!
-        Me.Animator1.DefaultAnimation = Animation3
+        Animation1.BlindCoeff = CType(resources.GetObject("Animation1.BlindCoeff"), System.Drawing.PointF)
+        Animation1.LeafCoeff = 0!
+        Animation1.MosaicCoeff = CType(resources.GetObject("Animation1.MosaicCoeff"), System.Drawing.PointF)
+        Animation1.MosaicShift = CType(resources.GetObject("Animation1.MosaicShift"), System.Drawing.PointF)
+        Animation1.MosaicSize = 20
+        Animation1.Padding = New System.Windows.Forms.Padding(30)
+        Animation1.RotateCoeff = 0!
+        Animation1.RotateLimit = 0!
+        Animation1.ScaleCoeff = CType(resources.GetObject("Animation1.ScaleCoeff"), System.Drawing.PointF)
+        Animation1.SlideCoeff = CType(resources.GetObject("Animation1.SlideCoeff"), System.Drawing.PointF)
+        Animation1.TimeCoeff = 0!
+        Animation1.TransparencyCoeff = 0!
+        Me.Animator1.DefaultAnimation = Animation1
         '
         'Panel2
         '
@@ -223,24 +228,28 @@ Partial Class Form1
         '
         Me.Animator2.AnimationType = AnimatorNS.AnimationType.HorizSlide
         Me.Animator2.Cursor = Nothing
-        Animation4.BlindCoeff = CType(resources.GetObject("Animation4.BlindCoeff"), System.Drawing.PointF)
-        Animation4.LeafCoeff = 0!
-        Animation4.MosaicCoeff = CType(resources.GetObject("Animation4.MosaicCoeff"), System.Drawing.PointF)
-        Animation4.MosaicShift = CType(resources.GetObject("Animation4.MosaicShift"), System.Drawing.PointF)
-        Animation4.MosaicSize = 0
-        Animation4.Padding = New System.Windows.Forms.Padding(0)
-        Animation4.RotateCoeff = 0!
-        Animation4.RotateLimit = 0!
-        Animation4.ScaleCoeff = CType(resources.GetObject("Animation4.ScaleCoeff"), System.Drawing.PointF)
-        Animation4.SlideCoeff = CType(resources.GetObject("Animation4.SlideCoeff"), System.Drawing.PointF)
-        Animation4.TimeCoeff = 0!
-        Animation4.TransparencyCoeff = 0!
-        Me.Animator2.DefaultAnimation = Animation4
+        Animation2.BlindCoeff = CType(resources.GetObject("Animation2.BlindCoeff"), System.Drawing.PointF)
+        Animation2.LeafCoeff = 0!
+        Animation2.MosaicCoeff = CType(resources.GetObject("Animation2.MosaicCoeff"), System.Drawing.PointF)
+        Animation2.MosaicShift = CType(resources.GetObject("Animation2.MosaicShift"), System.Drawing.PointF)
+        Animation2.MosaicSize = 0
+        Animation2.Padding = New System.Windows.Forms.Padding(0)
+        Animation2.RotateCoeff = 0!
+        Animation2.RotateLimit = 0!
+        Animation2.ScaleCoeff = CType(resources.GetObject("Animation2.ScaleCoeff"), System.Drawing.PointF)
+        Animation2.SlideCoeff = CType(resources.GetObject("Animation2.SlideCoeff"), System.Drawing.PointF)
+        Animation2.TimeCoeff = 0!
+        Animation2.TransparencyCoeff = 0!
+        Me.Animator2.DefaultAnimation = Animation2
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.txtResult)
+        Me.Panel3.Controls.Add(Me.Label2)
+        Me.Panel3.Controls.Add(Me.lblResult)
+        Me.Panel3.Controls.Add(Me.Label1)
+        Me.Panel3.Controls.Add(Me.ProgressBar1)
         Me.Panel3.Controls.Add(Me.ConsoleControl1)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(20, 60)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(764, 395)
@@ -250,12 +259,61 @@ Partial Class Form1
         '
         Me.ConsoleControl1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ConsoleControl1.IsInputEnabled = True
-        Me.ConsoleControl1.Location = New System.Drawing.Point(0, 224)
+        Me.ConsoleControl1.Location = New System.Drawing.Point(0, 288)
         Me.ConsoleControl1.Name = "ConsoleControl1"
         Me.ConsoleControl1.SendKeyboardCommandsToProcess = False
         Me.ConsoleControl1.ShowDiagnostics = False
-        Me.ConsoleControl1.Size = New System.Drawing.Size(764, 171)
+        Me.ConsoleControl1.Size = New System.Drawing.Size(764, 107)
         Me.ConsoleControl1.TabIndex = 0
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(231, 165)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(244, 23)
+        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
+        Me.ProgressBar1.TabIndex = 10
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(303, 130)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(114, 25)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "Please wait..."
+        '
+        'lblResult
+        '
+        Me.lblResult.AutoSize = True
+        Me.lblResult.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblResult.Location = New System.Drawing.Point(8, 17)
+        Me.lblResult.Name = "lblResult"
+        Me.lblResult.Size = New System.Drawing.Size(114, 25)
+        Me.lblResult.TabIndex = 12
+        Me.lblResult.Text = "Please wait..."
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(508, 17)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(147, 25)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "Predicted Values"
+        '
+        'txtResult
+        '
+        Me.txtResult.BackColor = System.Drawing.Color.White
+        Me.txtResult.Font = New System.Drawing.Font("Segoe UI Semilight", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtResult.Location = New System.Drawing.Point(432, 55)
+        Me.txtResult.Multiline = True
+        Me.txtResult.Name = "txtResult"
+        Me.txtResult.ReadOnly = True
+        Me.txtResult.Size = New System.Drawing.Size(307, 88)
+        Me.txtResult.TabIndex = 14
         '
         'Form1
         '
@@ -274,6 +332,7 @@ Partial Class Form1
         Me.Panel2.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -296,4 +355,9 @@ Partial Class Form1
     Friend WithEvents cmbOutputVector As MetroFramework.Controls.MetroComboBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents ConsoleControl1 As ConsoleControl.ConsoleControl
+    Friend WithEvents Label1 As Label
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents lblResult As Label
+    Friend WithEvents txtResult As TextBox
+    Friend WithEvents Label2 As Label
 End Class
